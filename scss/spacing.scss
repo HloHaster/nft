@@ -1,0 +1,52 @@
+$step: 4;
+$breakpoints: (basic: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px, );
+$prefixes: (t: ('top'), b: ('bottom'), r: ('right'), l: ('left'), y: ('top', 'bottom'), x: ('right', 'left'), a: (),);
+$spaceNames: (margin: 'm', padding: 'p',);
+
+@mixin make-spaces($step, $spaceNames, $prefixes, $breakpoints) {
+  @each $spaceName, $shortName in $spaceNames {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @if $breakpoint == basic {
+        @each $prefix, $directions in $prefixes {
+          @if $prefix == a {
+            @for $i from 0 through 17 {
+              .#{$shortName}#{$prefix}-#{$i} {
+                #{$spaceName}: #{($i * $step)+12}px;
+              }
+            }
+          } @else {
+            @for $i from 0 through 17 {
+              .#{$shortName}#{$prefix}-#{$i} {
+                @each $direction in $directions {
+                  #{$spaceName}-#{$direction}: #{($i * $step)+12}px;
+                }
+              }
+            }
+          }
+        }
+      } @else {
+        @media screen and (min-width: $breakpoint-value) {
+          @each $prefix, $directions in $prefixes {
+            @if $prefix == a {
+              @for $i from 0 through 17 {
+                .#{$shortName}#{$prefix}-#{$breakpoint}-#{$i} {
+                  #{$spaceName}: #{($i * $step)+12}px;
+                }
+              }
+            } @else {
+              @for $i from 0 through 17 {
+                .#{$shortName}#{$prefix}-#{$breakpoint}-#{$i} {
+                  @each $direction in $directions {
+                    #{$spaceName}-#{$direction}: #{($i * $step)+12}px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include make-spaces($step, $spaceNames, $prefixes, $breakpoints);

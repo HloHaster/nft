@@ -1,0 +1,16 @@
+{
+  "name": "rendergroup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass scss/ -o css",
+    "watch": "nodemon -e scss -x npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.15"
+  }
+}
