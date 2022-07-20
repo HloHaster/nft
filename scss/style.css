@@ -6561,7 +6561,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .image {
-  height: 70%;
+  height: 80%;
   width: 70%;
   margin: 0 auto;
   position: relative;
@@ -6575,10 +6575,17 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 0;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
   grid-column-gap: 0;
   grid-row-gap: 0;
+}
+.image .grid .grid__item {
+  box-shadow: 0 0 1px grey;
+  cursor: pointer;
+}
+.image .grid .grid__item:hover {
+  border: 1px solid black;
 }
 
 /*# sourceMappingURL=style.css.map */
